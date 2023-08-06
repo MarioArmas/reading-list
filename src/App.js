@@ -1,9 +1,10 @@
 import './App.css'
+import './input.css'
 import ReadingList from './pages/ReadingList'
 
 function App() {
   return (
-    <main className="App">
+    <main className='m-16'>
       <ReadingList />
     </main>
   )

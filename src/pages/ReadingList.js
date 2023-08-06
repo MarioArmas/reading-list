@@ -17,9 +17,9 @@ export default function ReadingList() {
   }, [])
 
   return (
-    <>
+    <div className=''>
       <Header />
       <Tabs booksAvailable={booksAvailable} readingList={readingList} />
-    </>
+    </div>
   )
 }
