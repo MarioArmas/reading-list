@@ -1,0 +1,23 @@
+
+* {
+  box-sizing: border-box;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 400;
+}
+
+input {
+  border: none;
+}
+
+input:focus {
+  border: none;
+}
+
+input:focus-visible {
+  outline: none;
+}
+
+a {
+  font-style: none;
+  text-decoration: none;
+}
