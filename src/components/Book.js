@@ -1,14 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import getBookByISBN from '../utils/getBookByISBN'
+import BooksContext from '../context/BooksContext'
 
-export default function Book({ bookData }) {
-  const { title, pages, genre, cover, synopsis, year, ISBN, author } = bookData
+export default function Book({ ISBN, isReadingList }) {
+  const [bookData, setBookData] = useState()
+  const { setReadingList } = useContext(BooksContext)
 
-  return (
+  useEffect(() => {
+    getBookByISBN(ISBN)
+      .then((data) => {
+        setBookData(data.book)
+      })
+  },[ISBN])
+
+  return bookData ? (
     <div className=''>
-      <img src={cover} alt={title} />
+      <img src={bookData?.cover} alt={bookData?.title} onClick={() => {
+          isReadingList
+          ? setReadingList((prev) => prev.filter(el => el !== ISBN))
+          : setReadingList((prev) => [...new Set([...prev, ISBN])])
+        }} />
       <h1 className='text-lg font-bold'>
-        {title}
+        {bookData?.title}
       </h1>
     </div>
-  )
+  ) : null
 }

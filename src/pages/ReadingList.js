@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import Header from '../layouts/Header'
 import Tabs from '../layouts/Tabs'
-import getBooks from '../services/fetch'
-import useLocalStorage from '../hooks/useLocalStorage'
+import getAllBooks from '../services/getAllBooks'
+import useBooks from '../hooks/useBooks'
+import BooksContext from '../context/BooksContext'
 
 export default function ReadingList() {
-  const [booksAvailable, setBooksAvailable] = useState([])
-  const [readingList, setReadingList] = useState([])
-  const [localStorage, setLocalStorage] = useLocalStorage('books', [])
+  const [allBooks, setAllBooks] = useState([])
+  const [booksAvailable, readingList, setReadingList] = useBooks(allBooks)
 
   useEffect(() => {
-    getBooks()
+    getAllBooks()
       .then((data) => {
-        setBooksAvailable(data.library)
+        return data.library
+      })
+      .then(data => {
+        const ids = data.map((el) => {
+          return el.book.ISBN
+        })
+        setAllBooks(ids)
       })
   }, [])
 
   return (
-    <div className=''>
+    <BooksContext.Provider value={{booksAvailable, readingList, setReadingList}}>
       <Header />
-      <Tabs booksAvailable={booksAvailable} readingList={readingList} />
-    </div>
+      <Tabs />
+    </BooksContext.Provider>
   )
 }
