@@ -1,7 +1,7 @@
-import getAllBooks from '../services/getAllBooks'
+import fetchAllBooks from '../services/fetchAllBooks'
 
 export default async function getBookByISBN(ISBN) {
-  const book = await getAllBooks()
+  const book = await fetchAllBooks()
     .then(data => {
       return data.library
     })

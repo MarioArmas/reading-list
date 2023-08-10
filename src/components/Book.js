@@ -7,7 +7,7 @@ export default function Book({ ISBN, isReadingList }) {
   const [bookData, setBookData] = useState()
   const [isDisabled, setIsDisabled] = useState(false)
   const [hover, setHover] = useState(false)
-  const { setReadingList } = useContext(BooksContext)
+  const { genreFilter, setReadingList } = useContext(BooksContext)
 
   useEffect(() => {
     getBookByISBN(ISBN)
@@ -24,7 +24,8 @@ export default function Book({ ISBN, isReadingList }) {
     setIsDisabled(false)
   }
 
-  return bookData ? (
+  return bookData ? 
+    genreFilter.includes(bookData.genre) || genreFilter === '' ? (
     <div
       className='relative p-1 m-1 bg-gray-100'
       onMouseEnter={() => setHover(true)}
@@ -36,7 +37,7 @@ export default function Book({ ISBN, isReadingList }) {
       </span>
       {
         hover ?
-        <div className='absolute w-full h-3/4 top-0 left-0 bg-gray-100 opacity-90 p-4 transition-all translate-y-0 ease-in'>
+        <div className='absolute w-full h-3/4 top-0 left-0 bg-gray-100 opacity-90 p-4'>
           <p>
             {bookData.synopsis}
           </p>
@@ -59,4 +60,5 @@ export default function Book({ ISBN, isReadingList }) {
       />
     </div>
   ) : null
+  : null
 }
