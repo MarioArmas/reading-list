@@ -1,4 +1,3 @@
-import './App.css'
 import './input.css'
 import ReadingList from './pages/ReadingList'
 
