@@ -3,7 +3,7 @@ import ReadingList from './pages/ReadingList'
 
 function App() {
   return (
-    <main className='m-16'>
+    <main className='md:mx-16 mx-8'>
       <ReadingList />
     </main>
   )

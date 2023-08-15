@@ -6,10 +6,10 @@ export default function Header() {
   const inputRef = useRef()
 
   return (
-    <header className='py-16 relative'>
+    <header className='sm:py-16 max-sm:my-8 relative max-sm:flex max-sm:flex-col max-sm:justify-evenly max-sm:items-center max-sm:h-40'>
       <h1 className='text-4xl font-bold'>Librería</h1>
       <input
-        className='absolute right-0 bg-gray-100 py-2 px-4'
+        className='sm:absolute right-0 bg-gray-100 py-2 px-4'
         ref={inputRef}
         list='genre'
         name='genre'

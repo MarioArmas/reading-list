@@ -5,7 +5,7 @@ export default function TabButton({ text, onClick, isActive }) {
   
   return (
     <button
-      className={'text-lg mr-12 py-3 hover:text-black ' + classAttributtes} onClick={onClick}
+      className={'text-lg sm:mr-12 py-3 hover:text-black max-sm:text-sm ' + classAttributtes} onClick={onClick}
     >
       {text}
     </button>
