@@ -9,7 +9,7 @@ export default function Tabs() {
 
   return (
     <>
-      <div className='flex flex-row max-sm:justify-around'>
+      <div className='flex flex-row max-sm:justify-around border-b-2'>
         <TabButton
           text={`Libros disponibles (${booksAvailable.length})`}
           onClick={() => setIsReadingbooks(false)}
